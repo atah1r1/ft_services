@@ -34,6 +34,8 @@ COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/supervisord.conf /etc/supervisord.conf
 COPY config/sql.sh .
 COPY config/supervisor.sh .
+COPY config/wp_db.sql .
+COPY config/wp-config.php /var/www/html/
 RUN chmod +x supervisor.sh
 EXPOSE 5050
 # ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf", "-s"]

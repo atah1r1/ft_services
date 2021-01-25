@@ -32,9 +32,10 @@ RUN mv wordpress/ /var/www/html
 
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY config/supervisord.conf /etc/supervisord.conf
-COPY config/sql.sh /
-RUN chmod +x sql.sh
+COPY config/sql.sh .
+COPY config/supervisor.sh .
+RUN chmod +x supervisor.sh
 EXPOSE 5050
 # ENTRYPOINT ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf", "-s"]
-CMD ["sh", "sql.sh"]
+CMD ["sh", "supervisor.sh"]
 # CMD tail -f /dev/null

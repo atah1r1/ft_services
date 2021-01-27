@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.11
 
 # install packages
 RUN apk update
@@ -24,4 +24,4 @@ COPY website/index.html /var/www/html/index.html
 COPY config/supervisord.conf /etc/supervisord.conf
 EXPOSE 80 443
 # run Supervisor with the configuration file supervisord.conf and no stdout with the -s parameter
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf", "-s"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

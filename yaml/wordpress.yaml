@@ -9,8 +9,7 @@ metadata:
 spec: 
   ports: 
     - port: 5050
-      name: wordpress
-      targetPort: 5050
+      targetPort: 80
   selector: 
     app: wordpress
   type: LoadBalancer
@@ -34,7 +33,7 @@ spec:
       containers: 
         - 
           image: wordpress_service
-          name: wordpress
+          name: nginx
           imagePullPolicy: Never
           ports:
             - containerPort: 5050

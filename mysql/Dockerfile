@@ -1,4 +1,3 @@
-
 FROM    alpine:3.11
 RUN     apk update
 RUN     apk add mariadb mariadb-common mariadb-client openrc

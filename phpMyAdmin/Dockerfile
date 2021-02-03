@@ -20,6 +20,7 @@ RUN     tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz
 RUN     mv phpMyAdmin-5.0.2-all-languages phpMyAdmin
 RUN     cp -r phpMyAdmin /var/www/html/
 COPY    config/config.inc.php /var/www/html/
+RUN     mkdir /var/www/html/tmp && chmod 777 /var/www/html/tmp
 EXPOSE  5000
 CMD     ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 

@@ -2,7 +2,7 @@ FROM alpine:3.11
 
 # install packages
 RUN apk update
-RUN apk add nginx supervisor openssl
+RUN apk add nginx supervisor openssl openssh
 
 # SSL configuration
 RUN mkdir /etc/nginx/ssl
@@ -22,6 +22,7 @@ RUN mkdir -p /run/nginx
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY website/index.html /var/www/html/index.html
 COPY config/supervisord.conf /etc/supervisord.conf
-EXPOSE 80 443
+COPY config/ssh.sh .
+EXPOSE 80 443 22
 # run Supervisor with the configuration file supervisord.conf and no stdout with the -s parameter
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

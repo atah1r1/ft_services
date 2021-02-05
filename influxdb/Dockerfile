@@ -4,6 +4,10 @@ RUN     apk update
 RUN     apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/
 RUN     apk add supervisor
 RUN     apk add influxdb
+RUN     mkdir -p /etc/telegraf
+COPY    /config/telegraf.conf /etc/telegraf/
+COPY    /config/supervisord.conf  /etc/supervisord.conf
+COPY    /config/supervisor.sh    .
 
 EXPOSE 8086
 CMD sh supervisor.sh

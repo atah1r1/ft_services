@@ -13,11 +13,15 @@ docker build nginx -t nginx_service
 docker build wordpress -t wordpress_service
 docker build phpMyAdmin -t pma_service
 docker build mysql -t mysql_service
+docker build grafana -t grafana_service
+docker build influxdb -t influxdb_service
 
 kubectl apply -f yaml/nginx.yaml
 kubectl apply -f yaml/wordpress.yaml
 kubectl apply -f yaml/mysql.yaml
 kubectl apply -f yaml/phpmyadmin.yaml
+kubectl apply -f yaml/grafana.yaml
+kubectl apply -f yaml/influxdb.yaml
 
 eval $(minikube docker-env)
 ssh-keygen -R 192.168.99.125 # to update certificate in MacOS to prevent confliction

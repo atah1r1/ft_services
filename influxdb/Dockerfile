@@ -8,7 +8,7 @@ RUN     mkdir -p /etc/telegraf
 COPY    /config/telegraf.conf /etc/telegraf/
 COPY    /config/supervisord.conf  /etc/supervisord.conf
 COPY    /config/supervisor.sh    .
-# COPY    /config/influxdb.sh .
+COPY    /config/influxdb.sh .
 
 EXPOSE 8086
 CMD sh supervisor.sh

@@ -12,6 +12,6 @@ COPY    /config/telegraf.conf /etc/telegraf/
 COPY    /config/supervisord.conf  /etc/supervisord.conf
 COPY    /config/grafana.sh        .
 COPY    /config/supervisor.sh    .
-# COPY    /config/grafana.db   /grafana-7.1.5/data/grafana.db
+COPY    /config/grafana.db   /grafana-7.4.0/data/grafana.db
 EXPOSE  3000
 CMD     sh supervisor.sh

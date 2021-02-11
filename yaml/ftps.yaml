@@ -8,33 +8,41 @@ metadata:
   name: ftps-service
 spec: 
   ports: 
-    - port: 21
-      name: ftps
-      targetPort: 21
+       - port: 21
+         name: ftps-port
+       - port: 20
+         name: port-ftps
+       - port: 30000
+         name: ftps-passv-port
+       - port: 30009
+         name: passv-ftps-port
   selector: 
     app: ftps
   type: LoadBalancer
+
 ---
+        
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  labels: 
-    app: ftps
-  name: ftps-deployment
+     labels: 
+       app: ftps
+     name: ftps-deployment
 spec: 
-  replicas: 1
-  selector: 
-    matchLabels: 
-      app: ftps
-  template: 
-    metadata: 
-      labels: 
-        app: ftps
-    spec: 
-      containers: 
-        - 
-          image: ftps_service
-          name: ftps
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 80
+     replicas: 1
+     selector: 
+       matchLabels: 
+         app: ftps
+     template: 
+       metadata: 
+         labels: 
+           app: ftps
+       spec: 
+         containers: 
+           - image: ftps_service
+             name: ftps
+             imagePullPolicy: Never
+             ports:
+              - containerPort: 21
+              - containerPort: 30000
+              - containerPort: 30009

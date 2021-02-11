@@ -2,7 +2,7 @@ FROM alpine:3.11
 
 # install packages
 RUN     apk update
-RUN     apk add nginx supervisor openssl openssh
+RUN     apk add nginx supervisor openssl openssh openrc
 RUN     apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/
 
 # SSL configuration
@@ -13,7 +13,6 @@ RUN     yes "" | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /et
 
 # create the user that the web server will use
 RUN     adduser -D -g 'www' www
-
 # setup the web server files and permitions
 RUN     mkdir /www
 RUN     chown -R www:www /www

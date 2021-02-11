@@ -33,7 +33,7 @@ spec:
       containers: 
         - 
           image: wordpress_service
-          name: nginx
+          name: wordpress
           imagePullPolicy: Never
           ports:
             - containerPort: 5050

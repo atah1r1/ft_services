@@ -20,7 +20,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 20Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -39,8 +39,7 @@ spec:
         app: mysql
     spec: 
       containers: 
-        - 
-          image: mysql_service
+        - image: mysql_service
           name: mysql
           imagePullPolicy: Never
           ports:

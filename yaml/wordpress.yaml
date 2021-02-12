@@ -18,7 +18,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   labels: 
-    app: wordpress
+    app: wordpress 
   name: wordpress-deployment
 spec: 
   replicas: 1

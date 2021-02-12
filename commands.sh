@@ -25,4 +25,5 @@ kubectl apply -f yaml/grafana.yaml
 kubectl apply -f yaml/influxdb.yaml
 kubectl apply -f yaml/ftps.yaml
 
+eval $(minikube docker-env)
 ssh-keygen -R 192.168.99.125 # to update certificate in MacOS to prevent confliction

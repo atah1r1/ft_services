@@ -12,10 +12,12 @@ spec:
          name: ftps-port
        - port: 20
          name: port-ftps
-       - port: 30000
+       - port: 31009
          name: ftps-passv-port
-       - port: 30009
+       - port: 31010
          name: passv-ftps-port
+       - port: 31011
+         name: passv-ftps-port1
   selector: 
     app: ftps
   type: LoadBalancer
@@ -44,5 +46,6 @@ spec:
              imagePullPolicy: Never
              ports:
               - containerPort: 21
-              - containerPort: 30000
-              - containerPort: 30009
+              - containerPort: 31009
+              - containerPort: 31010
+              - containerPort: 31011

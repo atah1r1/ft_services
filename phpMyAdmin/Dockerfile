@@ -26,38 +26,3 @@ COPY    config/config.inc.php /var/www/html/
 RUN     mkdir /var/www/html/tmp && chmod 777 /var/www/html/tmp
 EXPOSE  5000
 CMD     ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# FROM    alpine:3.11
-# RUN     apk update
-# RUN     apk add mariadb mariadb-common mariadb-client openrc
-# RUN     apk add supervisor
-# COPY    config/sql.sh    .
-# COPY    config/supervisor.sh    .
-# COPY    config/supervisord.conf  /etc/supervisord.conf
-# COPY    config/mysql.conf     /etc/mysql/my.cnf
-# COPY    config/wp_db.sql     .
-# COPY    config/phpMyAdmin-5.0.2-all-languages.tar.gz .
-# RUN     tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz
-# RUN     mv phpMyAdmin-5.0.2-all-languages phpMyAdmin
-# RUN     cp -r phpMyAdmin /var/www/html/
-# RUN     chmod +x supervisor.sh
-# EXPOSE  5000
-# CMD     ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf", "-s"]

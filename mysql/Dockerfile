@@ -11,4 +11,5 @@ COPY    /config/telegraf.conf /etc/telegraf/
 COPY    config/mysql.conf     /etc/mysql/my.cnf
 COPY    config/wp_db.sql     .
 RUN     chmod +x supervisor.sh
+EXPOSE 3306
 CMD     sh supervisor.sh

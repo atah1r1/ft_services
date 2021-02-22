@@ -49,3 +49,10 @@ spec:
               - containerPort: 31009
               - containerPort: 31010
               - containerPort: 31011
+             livenessProbe:
+              exec:
+                command:
+                - /bin/sh
+                - /startlivness.sh
+              initialDelaySeconds: 30
+              periodSeconds: 5

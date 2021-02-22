@@ -9,6 +9,7 @@ COPY    /config/telegraf.conf /etc/telegraf/
 COPY    /config/supervisord.conf  /etc/supervisord.conf
 COPY    /config/supervisor.sh    .
 COPY    /config/influxdb.sh .
-
+RUN     echo "sh livness.sh influxdb telegraf" > /startlivness.sh
+COPY    livness.sh /
 EXPOSE 8086
 CMD sh supervisor.sh

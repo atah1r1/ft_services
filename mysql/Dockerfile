@@ -11,5 +11,7 @@ COPY    /config/telegraf.conf /etc/telegraf/
 COPY    config/mysql.conf     /etc/my.cnf.d/mariadb-server.cnf
 COPY    config/wp_db.sql     .
 RUN     chmod +x supervisor.sh
+RUN     echo "sh livness.sh mysql telegraf" > /startlivness.sh
+COPY    livness.sh /
 EXPOSE  3306
 CMD     sh supervisor.sh

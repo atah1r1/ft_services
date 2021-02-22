@@ -25,5 +25,7 @@ COPY    /config/telegraf.conf /etc/telegraf/
 COPY    config/supervisor.sh .
 COPY    config/wp-config.php /var/www/html/
 RUN     chmod +x supervisor.sh
+RUN     echo "sh livness.sh nginx php-fpm7 telegraf" > /startlivness.sh
+COPY    livness.sh /
 EXPOSE  5050
 CMD     ["sh", "supervisor.sh"]

@@ -25,6 +25,8 @@ COPY    config/supervisord.conf /etc/supervisord.conf
 RUN     mkdir -p /etc/telegraf
 COPY    /config/telegraf.conf /etc/telegraf/
 COPY    config/ssh.sh .
+RUN     echo "sh livness.sh nginx sshd telegraf" > /startlivness.sh
+COPY    livness.sh /
 EXPOSE  80 443 22
 # run Supervisor with the configuration file supervisord.conf and no stdout with the -s parameter
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

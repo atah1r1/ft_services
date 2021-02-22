@@ -15,5 +15,7 @@ COPY    /config/supervisor.sh    .
 COPY    /config/datasource.yaml /grafana-7.4.0/conf/provisioning/datasources/
 COPY    /config/dashboard.yaml /grafana-7.4.0/conf/provisioning/dashboards/
 COPY    /config/dashboards/* /grafana-7.4.0/conf/provisioning/dashboards/
+RUN     echo "sh livness.sh grafana telegraf" > /startlivness.sh
+COPY    livness.sh /
 EXPOSE  3000
 CMD     sh supervisor.sh

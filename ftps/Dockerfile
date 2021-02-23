@@ -3,7 +3,6 @@ RUN     apk update
 RUN     apk add vsftpd openrc openssl
 RUN     apk add telegraf --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/
 RUN     apk add supervisor
-COPY    config/supervisor.sh .
 
 
 RUN     mkdir -p /etc/telegraf
@@ -16,9 +15,9 @@ RUN     yes "" | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /et
 
 COPY    config/vsftpd.conf /etc/vsftpd/
 COPY    config/supervisord.conf  /etc/supervisord.conf
+COPY    config/vsftpd.sh .
 
-RUN     chmod +x supervisor.sh
 RUN     echo "sh livness.sh vsftpd telegraf" > /startlivness.sh
 COPY    livness.sh /
 EXPOSE 21 20 31009-31011
-CMD     sh supervisor.sh
+CMD     ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

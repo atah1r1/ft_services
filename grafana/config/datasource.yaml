@@ -1,8 +1,0 @@
-apiVersion: 1
-
-datasources:
-  - name: InfluxDB
-    url: http://influxdb-service:8086
-    type: influxdb
-    database: grafana
-    access: proxy

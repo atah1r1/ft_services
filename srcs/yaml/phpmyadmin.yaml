@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  annotations:
+    metallb.universe.tf/allow-shared-ip: shared
+  labels: 
+    app: phpmyadmin
+  name: phpmyadmin
+spec: 
+  ports: 
+    - port: 5000
+      targetPort: 80
+  selector: 
+    app: pma
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: phpmyadmin
+  name: phpmyadmin
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: pma
+  template: 
+    metadata: 
+      labels: 
+        app: pma
+    spec: 
+      containers: 
+        - 
+          image: pma_service
+          name: nginx
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          livenessProbe:
+              exec:
+                command:
+                - sh
+                - startlivness.sh
+              initialDelaySeconds: 30
+              periodSeconds: 5

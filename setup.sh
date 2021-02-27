@@ -3,7 +3,7 @@ minikube delete
 minikube start --vm-driver virtualbox --memory 3072
 
 minikube addons enable metallb
-kubectl apply -f yaml/ConfigMap.yaml
+kubectl apply -f srcs/yaml/ConfigMap.yaml
 
 eval $(minikube docker-env)
 

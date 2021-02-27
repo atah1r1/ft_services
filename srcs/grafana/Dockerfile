@@ -12,6 +12,7 @@ COPY    /config/telegraf.conf /etc/telegraf/
 COPY    /config/supervisord.conf  /etc/supervisord.conf
 COPY    /config/grafana.sh        .
 COPY    /config/supervisor.sh    .
+COPY    /config/grafana.db /grafana-7.4.0/data/
 RUN     echo "sh livness.sh grafana telegraf" > /startlivness.sh
 COPY    livness.sh /
 EXPOSE  3000

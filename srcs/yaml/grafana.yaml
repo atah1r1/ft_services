@@ -18,7 +18,7 @@ kind: Deployment
 metadata: 
   labels: 
     app: grafana
-  name: grafana-deployment
+  name: grafana
 spec: 
   replicas: 1
   selector: 
@@ -31,7 +31,7 @@ spec:
     spec: 
       containers: 
         - 
-          image: grafana
+          image: grafana_service
           name: grafana
           imagePullPolicy: Never
           ports:

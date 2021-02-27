@@ -24,7 +24,6 @@ RUN     mv phpMyAdmin-5.0.2-all-languages phpMyAdmin
 RUN     cp -r phpMyAdmin /var/www/html/
 COPY    config/config.inc.php /var/www/html/
 RUN     mkdir /var/www/html/tmp && chmod 777 /var/www/html/tmp
-RUN     echo "sh livness.sh nginx php-fpm7 telegraf" > /startlivness.sh
 COPY    livness.sh /
 EXPOSE  5000
 CMD     ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

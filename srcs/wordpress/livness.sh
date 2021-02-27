@@ -1,9 +1,12 @@
 #!/bin/sh
-for var in "$@"
-do
-    result=$(supervisorctl status | grep "$var" | awk '{print $2}')
-    if [[ $result == "EXITED" ]]; then
-        exit 1
-    fi
-done
+nginx=$(supervisorctl status | grep "nginx" | awk '{print $2}')
+phpfpm7=$(supervisorctl status | grep "php-fpm7" | awk '{print $2}')
+telegraf=$(supervisorctl status | grep "telegraf" | awk '{print $2}')
+if [[ $nginx == "EXITED" ]]; then
+    exit 1
+elif [[ $phpfpm7 == "EXITED" ]]; then
+    exit 1
+elif [[ $telegraf == "EXITED" ]]; then
+    exit 1
+fi
 exit 0

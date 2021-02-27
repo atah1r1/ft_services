@@ -1,9 +1,9 @@
 #!/bin/sh
-for var in "$@"
-do
-    result=$(supervisorctl status | grep "$var" | awk '{print $2}')
-    if [[ $result == "EXITED" ]]; then
-        exit 1
-    fi
-done
+vsftpd=$(supervisorctl status | grep "vsftpd" | awk '{print $2}')
+telegraf=$(supervisorctl status | grep "telegraf" | awk '{print $2}')
+if [[ $vsftpd == "EXITED" ]]; then
+    exit 1
+elif [[ $telegraf == "EXITED" ]]; then
+    exit 1
+fi
 exit 0

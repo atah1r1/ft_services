@@ -53,6 +53,6 @@ spec:
               exec:
                 command:
                 - sh
-                - startlivness.sh
+                - livness.sh
               initialDelaySeconds: 30
-              periodSeconds: 5
+              periodSeconds: 7

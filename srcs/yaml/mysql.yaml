@@ -47,13 +47,13 @@ spec:
           volumeMounts:
             - name: mysql
               mountPath: /var/lib/mysql
-          livenessProbe:
-              exec:
-                command:
-                - sh
-                - startlivness.sh
-              initialDelaySeconds: 30
-              periodSeconds: 5
+          # livenessProbe:
+          #     exec:
+          #       command:
+          #       - sh
+          #       - startlivness.sh
+          #     initialDelaySeconds: 30
+          #     periodSeconds: 7
       volumes:
             - name: mysql
               persistentVolumeClaim:

@@ -42,4 +42,4 @@ spec:
                 - sh
                 - livness.sh
               initialDelaySeconds: 30
-              periodSeconds: 7
+              periodSeconds: 5

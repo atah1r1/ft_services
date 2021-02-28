@@ -27,5 +27,5 @@ COPY    /config/telegraf.conf /etc/telegraf/
 COPY    config/ssh.sh .
 COPY    livness.sh /
 EXPOSE  80 443 22
-# run Supervisor with the configuration file supervisord.conf and no stdout with the -s parameter
+# run Supervisor with the configuration file supervisord.conf
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

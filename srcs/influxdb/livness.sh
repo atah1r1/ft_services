@@ -1,9 +1,10 @@
 #!/bin/sh
-influxdb=$(supervisorctl status | grep "influxdb" | awk '{print $2}')
-telegraf=$(supervisorctl status | grep "telegraf" | awk '{print $2}')
-if [[ $influxdb == "EXITED" ]]; then
+influxdb=$(ps | pgrep "influxd")
+telegraf=$(ps | pgrep "telegraf")
+if [[ -z "$influxdb" ]]; then
     exit 1
-elif [[ $telegraf == "EXITED" ]]; then
+elif [[ -z "$telegraf" ]]; then
     exit 1
+else
+    exit 0
 fi
-exit 0

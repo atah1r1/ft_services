@@ -1,9 +1,10 @@
 #!/bin/sh
-mysql=$(supervisorctl status | grep "mysql" | awk '{print $2}')
-telegraf=$(supervisorctl status | grep "telegraf" | awk '{print $2}')
-if [[ $mysql == "EXITED" ]]; then
+mysql=$(ps | pgrep "mysqld")
+telegraf=$(ps | pgrep "telegraf")
+if [[ -z "$mysql" ]]; then
     exit 1
-elif [[ $telegraf == "EXITED" ]]; then
+elif [[ -z "$telegraf" ]]; then
     exit 1
+else
+    exit 0
 fi
-exit 0

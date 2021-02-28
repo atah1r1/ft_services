@@ -1,9 +1,10 @@
 #!/bin/sh
-grafana=$(supervisorctl status | grep "grafana" | awk '{print $2}')
-telegraf=$(supervisorctl status | grep "telegraf" | awk '{print $2}')
-if [[ $grafana == "EXITED" ]]; then
+grafana=$(ps | pgrep "grafana")
+telegraf=$(ps | pgrep "telegraf")
+if [[ -z "$grafana" ]]; then
     exit 1
-elif [[ $telegraf == "EXITED" ]]; then
+elif [[ -z "$telegraf" ]]; then
     exit 1
+else
+    exit 0
 fi
-exit 0

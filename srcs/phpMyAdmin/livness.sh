@@ -1,12 +1,13 @@
 #!/bin/sh
-nginx=$(supervisorctl status | grep "nginx" | awk '{print $2}')
-phpfpm7=$(supervisorctl status | grep "php-fpm7" | awk '{print $2}')
-telegraf=$(supervisorctl status | grep "telegraf" | awk '{print $2}')
-if [[ $nginx == "EXITED" ]]; then
+nginx=$(ps | pgrep "nginx")
+phpfpm7=$(ps | pgrep "php-fpm7")
+telegraf=$(ps | pgrep "telegraf")
+if [[ -z "$nginx" ]]; then
     exit 1
-elif [[ $phpfpm7 == "EXITED" ]]; then
+elif [[ -z "$phpfpm7" ]]; then
     exit 1
-elif [[ $telegraf == "EXITED" ]]; then
+elif [[ -z "$telegraf" ]]; then
     exit 1
+else
+    exit 0
 fi
-exit 0

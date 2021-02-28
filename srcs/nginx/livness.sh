@@ -1,12 +1,13 @@
 #!/bin/sh
-nginx=$(supervisorctl status | grep "nginx" | awk '{print $2}')
-sshd=$(supervisorctl status | grep "sshd" | awk '{print $2}')
-telegraf=$(supervisorctl status | grep "telegraf" | awk '{print $2}')
-if [[ $nginx == "EXITED" ]]; then
+nginx=$(ps | pgrep "nginx")
+sshd=$(ps | pgrep "sshd")
+telegraf=$(ps | pgrep "telegraf")
+if [[ -z "$nginx" ]]; then
     exit 1
-elif [[ $sshd == "EXITED" ]]; then
+elif [[ -z "$sshd" ]]; then
     exit 1
-elif [[ $telegraf == "EXITED" ]]; then
+elif [[ -z "$telegraf" ]]; then
     exit 1
+else
+    exit 0
 fi
-exit 0

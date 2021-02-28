@@ -11,4 +11,4 @@ COPY    config/mysql.conf     /etc/my.cnf.d/mariadb-server.cnf
 COPY    config/wp_db.sql     .
 COPY    livness.sh /
 EXPOSE  3306
-CMD     sh sql.sh
+CMD     ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

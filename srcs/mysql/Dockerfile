@@ -8,7 +8,7 @@ COPY    config/sql.sh    .
 COPY    config/supervisord.conf  /etc/supervisord.conf
 RUN     mkdir -p /etc/telegraf
 COPY    /config/telegraf.conf /etc/telegraf/
-COPY    config/mysql.conf     /etc/mysql/my.cnf
+COPY    config/mysql.conf     /etc/my.cnf
 COPY    config/wp_db.sql     .
 COPY    livness.sh /
 EXPOSE  3306

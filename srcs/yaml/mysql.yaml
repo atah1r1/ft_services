@@ -11,17 +11,6 @@ spec:
     app: mysql
   type: ClusterIP
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
----
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
@@ -57,4 +46,17 @@ spec:
       volumes:
             - name: mysql
               persistentVolumeClaim:
-                claimName: mysql-pvc
+                claimName: mysql
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

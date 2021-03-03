@@ -19,6 +19,8 @@ echo "${red}----------------------------------------"
 echo "${reset}"
 
 minikube addons enable metallb
+# The memberlist secret contains the secretkey to encrypt the communication between speakers for the fast dead node detection.
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 kubectl apply -f srcs/yaml/ConfigMap.yaml
 
 eval $(minikube docker-env)

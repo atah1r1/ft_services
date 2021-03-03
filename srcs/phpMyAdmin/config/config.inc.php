@@ -29,7 +29,10 @@ $i++;
 /* Authentication type */
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'mysql';
+$cfg['Servers'][$i]['host'] = "mysql";
+$cfg['Servers'][$i]['port'] = "3306";
+$cfg['Servers'][$i]['user'] = "admin";
+$cfg['Servers'][$i]['password'] = "admin";
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 $cfg['PmaNoRelation_DisableWarning'] = TRUE;
@@ -75,7 +78,7 @@ $cfg['PmaNoRelation_DisableWarning'] = TRUE;
  */
 $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
-$cfg['TempDir'] = 'tmp';
+// $cfg['TempDir'] = 'tmp';
 
 /**
  * Whether to display icons or text or both icons and text in table row
